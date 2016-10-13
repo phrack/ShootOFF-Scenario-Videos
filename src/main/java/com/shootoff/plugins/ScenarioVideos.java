@@ -79,7 +79,7 @@ public class ScenarioVideos extends ProjectorTrainingExerciseBase implements Tra
 
 	@Override
 	public void reset(List<Target> targets) {
-		webview.getEngine().executeScript("player.seekTo(0, true);");
+		webview.getEngine().executeScript("player.seekTo(0, true); player.playVideo();");
 	}
 
 	@Override
