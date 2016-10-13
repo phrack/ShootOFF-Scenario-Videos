@@ -9,6 +9,7 @@ import com.shootoff.gui.TargetView;
 import com.shootoff.targets.Hit;
 import com.shootoff.targets.Target;
 
+import javafx.application.Platform;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
@@ -85,7 +86,11 @@ public class ScenarioVideos extends ProjectorTrainingExerciseBase implements Tra
 	@Override
 	public void shotListener(Shot shot, Optional<Hit> hit) {
 		if (pauseOnShotCheckBox.isSelected()) {
-			webview.getEngine().executeScript("player.pauseVideo();");
+			if (Platform.isFxApplicationThread()) {
+				webview.getEngine().executeScript("player.pauseVideo();");
+			} else {
+				Platform.runLater(() -> webview.getEngine().executeScript("player.pauseVideo();"));
+			}
 		}
 	}
 
