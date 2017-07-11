@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.shootoff.camera.Shot;
-import com.shootoff.gui.TargetView;
+import com.shootoff.gui.targets.TargetView;
 import com.shootoff.targets.Hit;
 import com.shootoff.targets.Target;
 
